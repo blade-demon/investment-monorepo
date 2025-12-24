@@ -17,5 +17,8 @@ export default defineConfig({
     // 模拟清理
     mockReset: true,
     restoreMocks: true,
+
+    // 在部分受限环境中 forks pool 可能无法正常 kill 子进程，改用 threads 更稳
+    pool: 'threads',
   },
 })

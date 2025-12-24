@@ -6,6 +6,8 @@ export type DemoData = {
   assetsLoaded?: boolean
   assets?: { symbol: string; amount: number }[]
   riskAgreed?: boolean
+  surveyDone?: boolean
+  surveySkipped?: boolean
   confirmed?: boolean
 }
 
@@ -14,5 +16,3 @@ export type DemoStepProps = {
   patch: (p: Partial<DemoData>) => void
   step?: StepConfig<DemoData>
 }
-
-

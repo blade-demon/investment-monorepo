@@ -67,6 +67,29 @@ describe('FlowEngine Logic', () => {
   })
 })
 
+describe('FlowEngine meta passthrough', () => {
+  it('getCurrentStepConfig 应能拿到步骤的 meta（用于 UI 副作用）', async () => {
+    type Data = { aDone: boolean }
+    const config: StepConfig<Data>[] = [
+      {
+        id: 'a',
+        type: 'A',
+        matcher: (d) => d.aDone,
+        meta: { pageTitle: 'Step A', trackEvent: 'step_a_expose' },
+      },
+    ]
+    const engine = new FlowEngine(config)
+    engine.registerLoader('A', async () => ({ default: 'AComp' }))
+
+    engine.sync({ aDone: false })
+    await flushAsync()
+
+    const current = engine.getCurrentStepConfig()
+    expect(current?.id).toBe('a')
+    expect(current?.meta).toEqual({ pageTitle: 'Step A', trackEvent: 'step_a_expose' })
+  })
+})
+
 // ----------------------------
 // 内核行为测试 (订阅 / 幂等 / 异常)
 // ----------------------------
