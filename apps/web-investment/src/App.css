@@ -1,0 +1,101 @@
+#root {
+  padding: 16px;
+}
+
+.flowDemoRoot {
+  max-width: 920px;
+  margin: 0 auto;
+  font-family: system-ui;
+}
+
+.flowDemoHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.flowDemoTitle {
+  font-weight: 700;
+}
+
+.flowDemoSubtitle {
+  opacity: 0.7;
+}
+
+.flowDemoReset {
+  margin-left: auto;
+}
+
+.flowDemoProgressWrap {
+  display: grid;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.flowDemoProgressMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flowDemoProgressText {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.flowDemoProgressNative {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  appearance: none;
+}
+
+.flowDemoProgressNative::-webkit-progress-bar {
+  background: #f1f5f9;
+  border-radius: 999px;
+}
+
+.flowDemoProgressNative::-webkit-progress-value {
+  background: linear-gradient(90deg, #22c55e, #3b82f6);
+  border-radius: 999px;
+}
+
+.flowDemoProgressNative::-moz-progress-bar {
+  background: linear-gradient(90deg, #22c55e, #3b82f6);
+  border-radius: 999px;
+}
+
+.flowDemoGrid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 16px;
+}
+
+.flowDemoPanel {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.flowDemoPanelTitle {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.flowDemoLabel {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+.flowDemoLabelSpacing {
+  margin-top: 12px;
+}
+
+.flowDemoPre {
+  font-size: 12px;
+  overflow: auto;
+  margin: 0;
+}

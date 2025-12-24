@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+coverage
+.turbo
+.next
+.cache
+.vite
+.pnpm-store
+.DS_Store
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
