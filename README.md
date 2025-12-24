@@ -11,31 +11,31 @@ graph TD
     classDef config fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,stroke-dasharray: 5 5,color:#000;
 
     %% --- 区域：业务数据层 ---
-    subgraph Data_Layer [数据输入层]
-        BackendAPI(后端接口 / 业务数据):::data
+    subgraph Data_Layer ["数据输入层"]
+        BackendAPI("后端接口 / 业务数据"):::data
     end
 
     %% --- 区域：配置层 ---
-    subgraph Config_Layer [配置定义层]
-        FlowConfig(StepConfig 数组):::config
-        RegistryConfig(组件注册表 Map):::config
+    subgraph Config_Layer ["配置定义层"]
+        FlowConfig("StepConfig 数组"):::config
+        RegistryConfig("组件注册表 Map"):::config
     end
 
     %% --- 区域：核心内核层 (Flow Kernel) ---
-    subgraph Kernel_Layer [Flow Kernel 核心引擎]
+    subgraph Kernel_Layer ["Flow Kernel 核心引擎"]
         direction TB
 
         EngineSync("⚡ FlowEngine.sync(data)"):::core
 
-        subgraph Calculation [状态计算循环]
-            StepLoop{遍历配置步骤}:::core
-            Matcher("🔎 Matcher 策略判断<br/>(checkKey / matcher / required / skipKey)"):::core
-            IsDone{是否完成?}:::core
+        subgraph Calculation ["状态计算循环"]
+            StepLoop{"遍历配置步骤"}:::core
+            Matcher("🔎 Matcher 策略判断<br/>(checkKey/required/skipKey)"):::core
+            IsDone{"是否完成?"}:::core
         end
 
         DiffCheck{"⚖️ 步骤是否变更?<br/>(NewID !== OldID)"}:::core
 
-        subgraph Transition [状态跃迁 & 副作用]
+        subgraph Transition ["状态跃迁 & 副作用"]
             SideEffects("✨ 触发 Interceptors<br/>(埋点 / Title修改)"):::core
             UpdateState1("📝 更新状态: Loading"):::core
             RegistryLookup("🗂️ Registry 查找加载器"):::core
@@ -47,7 +47,7 @@ graph TD
     end
 
     %% --- 区域：UI 适配与渲染层 ---
-    subgraph UI_Layer [UI 渲染层 (React)]
+    subgraph UI_Layer ["UI 渲染层 (React)"]
         ReactHook("🪝 useFlowEngine<br/>(useSyncExternalStore)"):::ui
         FlowRenderer("🎨 FlowRenderer 组件"):::ui
         BusinessComp("🧩 具体的业务组件<br/>(实名 / 绑卡 / 密码)"):::ui
@@ -86,7 +86,6 @@ graph TD
     %% 5. 闭环
     BusinessComp --> UserAction
     UserAction -->|6. 提交接口刷新数据| BackendAPI
-
 ```
 
 ---
